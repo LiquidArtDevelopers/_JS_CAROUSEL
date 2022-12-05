@@ -14,9 +14,8 @@ document.body.addEventListener("click", function (e) {
         /* le sumo 1  */
         ordensiguiente = ordenprincipal + 1
         
-       
+       /* le cambio las propiedades a la etiqueta imagen del html para que muestre otra foto (pues le cambio el src) */
         document.getElementById("img00").src = `imagenes/foto0${ordensiguiente}.jpg`
-
         document.getElementById("img00").setAttribute("orden",ordensiguiente)
 
     }   
