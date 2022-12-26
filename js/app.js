@@ -7,14 +7,15 @@ let template_string="",numfotos=10;
 
 //recorremos un for para crear el html del template_string teniendo en cuenta el valor de la iteración
 for(let i=1; i<=numfotos; i++){
-    //añadimos al valor de template_string el valor de template_string + la iteración
-    template_string+=`      
+    template_string =
+    `
     <img id="img0${i}" orden="${i}" src="imagenes/foto0${i}.jpg" alt="" onclick="mostrar('img0${i}')">        
-    `;
-    console.log(i)
+    `
+    inferior.insertAdjacentHTML("afterbegin",template_string)
+
 }
 //en la variable constante interior (del selector) insertamos HTML "aferbegin" (que irá dentro y al principio) y la variable con el HTML
-inferior.insertAdjacentHTML('afterbegin',template_string);
+//inferior.insertAdjacentHTML('afterbegin',template_string);
 //inferior.innerHTML=template_string;
 
 
@@ -44,6 +45,7 @@ function mostrar(imagen){
 }
 
 //Opción de selección de fotos desde las flechas
+
 const carrusel= function (imagen, boton){
     
     //paramos el pase automático
@@ -79,10 +81,11 @@ const carrusel= function (imagen, boton){
 
 //función pase que cogerá un número aleatorio para mostrar una imagen
 let numAle=0;
+const imagen = document.getElementById('img00')
 function random(){
     numAle=Number(numAle);
     numAle = Math.ceil(Math.random()*10);
-    document.getElementById('img00').src = document.getElementById('img0'+numAle).getAttribute('src');
+    imagen.src = document.getElementById('img0'+numAle).getAttribute('src');
     console.log(numAle);
     fade();
 }
@@ -90,6 +93,7 @@ function random(){
 //función que alternará entre dos clases para darle un efecto de face
 function fade(){
     
+
     clase = document.getElementById('img00').className;
     if (clase == "fade"){
         document.getElementById('img00').className = 'fadee';
