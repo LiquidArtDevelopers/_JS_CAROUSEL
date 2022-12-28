@@ -7,12 +7,8 @@ let template_string="",numfotos=10;
 
 //recorremos un for para crear el html del template_string teniendo en cuenta el valor de la iteración
 for(let i=1; i<=numfotos; i++){
-    template_string =
-    `
-    <img id="img0${i}" orden="${i}" src="imagenes/foto0${i}.jpg" alt="" onclick="mostrar('img0${i}')">        
-    `
+    template_string =`<img id="img0${i}" orden="${i}" src="imagenes/foto0${i}.jpg" alt="" onclick="mostrar('img0${i}')">`
     inferior.insertAdjacentHTML("afterbegin",template_string)
-
 }
 //en la variable constante interior (del selector) insertamos HTML "aferbegin" (que irá dentro y al principio) y la variable con el HTML
 //inferior.insertAdjacentHTML('afterbegin',template_string);
