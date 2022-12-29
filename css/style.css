@@ -29,16 +29,30 @@ img{
     object-fit: cover;           
 }
 .superior h1{
+<<<<<<< HEAD
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
+=======
+    font-family: 'Montserrat', sans-serif;
+    /* font-family:'IBM Plex Mono', monospace; */
+    font-weight: 100;
+    /* font-style: italic; */
+    font-size: 10rem;
+    color: white;
+>>>>>>> dd498813aa6d8418a2a2952d5e17c5cda9eae769
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -90%);
+<<<<<<< HEAD
     text-align: center;
     color: white;
     font-size: 250px;
 }
+=======
+}
+
+>>>>>>> dd498813aa6d8418a2a2952d5e17c5cda9eae769
 /* estilos de botón */
 .boton{
     position: absolute;

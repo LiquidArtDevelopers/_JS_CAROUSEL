@@ -1,13 +1,14 @@
 
-/* 1) zona de carousel de flechas */
+/* 1) zona de carousel de flechas esto sólo se ejecuta cuando pulsamos en las flechas*/
 var numfotos = 10;
 var ordenprincipal, ordensiguiente
 const flechaDER = document.getElementById("imgder");
 const flechaIZD = document.getElementById("imgizd");
-const fotogrande = document.getElementById("img00")
+const fotogrande = document.getElementById("img00");
+
 
 flechaDER.addEventListener("click", function(){
-
+    
     /* coger de la img principal la propiedad "orden" */
     ordenprincipal = fotogrande.getAttribute("orden");
 
@@ -30,6 +31,9 @@ flechaDER.addEventListener("click", function(){
 
     /* cambio la propiedad del atributo "orden" para que sea el de la siguiente foto */
     fotogrande.setAttribute("orden",ordensiguiente)
+
+    resetIntervalo()
+    crearIntervalo(5000)
 
 })
 
@@ -55,12 +59,15 @@ flechaIZD.addEventListener("click", function(){
     /* cambio la propiedad del atributo "orden" para que sea el de la foto anterior */
     fotogrande.setAttribute("orden",ordensiguiente)
 
+    resetIntervalo()
+    crearIntervalo(5000)
+
 })
 
 
 
 
-/* 2) zona de creación de miniaturas */
+/* 2) zona de creación de miniaturas (esto se ejecuta al cargar la web*/
 
 const inferior = document.getElementById("inferior")
 let contenido = "";
@@ -74,7 +81,7 @@ for(let i = 1; i<=numfotos; i++){
 
 
 
-/* 3) zona de pulsar en miniaturas y cargar imagen en grande */
+/* 3) zona de pulsar en miniaturas y cargar imagen en grande (esto sólo se ejecuta cuando pulsamos en las miniaturas*/
 
 /* //opción escuchando todos los clicks y condicionando los que sean sobre las miniaturas
 document.addEventListener("click", function(e){
@@ -104,15 +111,59 @@ for(const miniatura of miniaturas){
         let nuevoOrden = miniatura.getAttribute("orden");
         //establezco el atributo orden a la imagen grande.
         fotogrande.setAttribute("orden",nuevoOrden)
+
+        resetIntervalo()
+        crearIntervalo(5000)
+        
+
     })
 }
 
+<<<<<<< HEAD
 /* comentario de bloque donde 
 puede contener varias líneas de código contenido
 shift + ALT + A */
 
 
 // Comentario de línea
+=======
+/* 4) llamada a la función random cuando cargue la web (esto se ejcuta al cargar la web)*/
+random();
 
+/* 5) ejecutamos función interwall para que cada 5 segundos me cargue una imagen random  (esto se ejecuta al cargar la web) */
+crearIntervalo(5000);
+
+
+
+
+
+
+
+
+
+
+/*  zona de funciones */
+
+function crearIntervalo(tiempo){
+    intervalo = window.setInterval(random,tiempo)
+}
+
+function resetIntervalo(){
+    clearInterval(intervalo);
+}
+
+function random(){
+    //crear un número aleatorio
+    let numAleatorio;
+    numAleatorio = Number(numAleatorio);
+    numAleatorio = Math.random()*numfotos;
+    numAleatorio = Math.ceil(numAleatorio)
+    
+    fotogrande.src=`imagenes/foto0${numAleatorio}.jpg`
+    fotogrande.setAttribute("orden", numAleatorio)
+    
+}
+
+>>>>>>> dd498813aa6d8418a2a2952d5e17c5cda9eae769
 
 
