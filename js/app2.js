@@ -2,6 +2,7 @@
 /* 1) zona de carousel de flechas esto sólo se ejecuta cuando pulsamos en las flechas*/
 var numfotos = 10;
 var ordenprincipal, ordensiguiente
+var intervalo, temporizador; //GORKA: declaro las variables
 const flechaDER = document.getElementById("imgder");
 const flechaIZD = document.getElementById("imgizd");
 const fotogrande = document.getElementById("img00");
@@ -32,9 +33,7 @@ flechaDER.addEventListener("click", function(){
     /* cambio la propiedad del atributo "orden" para que sea el de la siguiente foto */
     fotogrande.setAttribute("orden",ordensiguiente)
 
-    resetIntervalo()
-    crearIntervalo(5000)
-
+    crearTemporizador(10000)
 })
 
 flechaIZD.addEventListener("click", function(){
@@ -59,8 +58,7 @@ flechaIZD.addEventListener("click", function(){
     /* cambio la propiedad del atributo "orden" para que sea el de la foto anterior */
     fotogrande.setAttribute("orden",ordensiguiente)
 
-    resetIntervalo()
-    crearIntervalo(5000)
+    crearTemporizador(10000)
 
 })
 
@@ -112,21 +110,12 @@ for(const miniatura of miniaturas){
         //establezco el atributo orden a la imagen grande.
         fotogrande.setAttribute("orden",nuevoOrden)
 
-        resetIntervalo()
-        crearIntervalo(5000)
+        crearTemporizador(10000)
         
-
     })
 }
 
-<<<<<<< HEAD
-/* comentario de bloque donde 
-puede contener varias líneas de código contenido
-shift + ALT + A */
 
-
-// Comentario de línea
-=======
 /* 4) llamada a la función random cuando cargue la web (esto se ejcuta al cargar la web)*/
 random();
 
@@ -134,24 +123,32 @@ random();
 crearIntervalo(5000);
 
 
-
-
-
-
-
-
-
-
 /*  zona de funciones */
-
+//función que obtiene un valor en milisegundos para establecer un setInterval de la función random cada dicho tiempo.
 function crearIntervalo(tiempo){
+    //en caso de que exista en la variable intervalo un setInterval anterior, lo borramos con clearInterval
+    if(intervalo != undefined){
+        clearInterval(intervalo)
+    }
+    //creamos el intervalo en bucle donde ejecutará cada "valor de tiempo" la función random (que lo que hace es elegir un num random del 1 al 10 y mostrar la imagen en grande con dicho número)
     intervalo = window.setInterval(random,tiempo)
 }
 
-function resetIntervalo(){
-    clearInterval(intervalo);
+//función que se encarga de crear un timeOut al cabo del tiempo obtenido en la variable tiempo.
+function crearTemporizador(tiempo){
+    //en caso de que ya exista un evento temporizador en la var temporizador, lo eliminamos
+    if(temporizador != undefined){
+        clearTimeout(temporizador)
+    }
+    //en caso de que también exista un intervalo en la variable intervalo, también la eliminamos.
+    if(intervalo != undefined){
+        clearInterval(intervalo)
+    }
+    //finalmente creamos un temporizador que se ejecutará al cabo del valor de "variable tiempo", y donde llamará a la función crearIntervalo (para iniciar el bucle de nuevo, y cada 5s)
+    temporizador = window.setTimeout(crearIntervalo(5000),tiempo)
 }
 
+//función encargada de obtener un num random del 1 al 10 (entero) y de cambiar el SRC y el atributo "orden" a la imagen principal
 function random(){
     //crear un número aleatorio
     let numAleatorio;
@@ -164,6 +161,5 @@ function random(){
     
 }
 
->>>>>>> dd498813aa6d8418a2a2952d5e17c5cda9eae769
 
 
