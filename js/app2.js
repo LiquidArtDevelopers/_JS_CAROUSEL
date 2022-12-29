@@ -107,6 +107,12 @@ for(const miniatura of miniaturas){
     })
 }
 
+/* comentario de bloque donde 
+puede contener varias líneas de código contenido
+shift + ALT + A */
+
+
+// Comentario de línea
 
 
 
